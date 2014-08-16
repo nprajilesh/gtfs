@@ -37,15 +37,8 @@ function init()
 {
 
 	socket = io.connect('http://localhost:3000');
-
-/*	socket.on('connect', function(data){
-    });
-
-    socket.on('reconnecting', function(data){
-    });
-*/
     socket.on('realtime', function (data) {
-    //		console.log(data);
+    		console.log(data);
    	 		updatevehicle(data);
    		 	if(data.trip_id==vehicle_id)
    		 	{
@@ -123,6 +116,10 @@ function createvehicle(data,point)
   	   	vehicle_id=this.id;
   		socket.emit('click',vehicle_id);
      	 document.getElementById('hideclick').style.display = "block";
+     	
+     	/*To stop following previous vechicle*/
+     	 follow_vehicle=0;
+		document.getElementById("follow_btn").value="Follow";
   	});
   	
   	var routelayer = new google.maps.KmlLayer({
@@ -178,7 +175,4 @@ function follow_toggle()
 			follow_vehicle=1;
 			document.getElementById("follow_btn").value="stop";
 		}
-		
-
-
 }

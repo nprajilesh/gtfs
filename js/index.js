@@ -69,6 +69,7 @@ function createmap()
 			streetViewControl: false,
 			mapTypeControl: false,
 			panControl: false,
+			scaleControl: false,
 			styles:map_style
 		};
 	map = new google.maps.Map(map_canvas, myOptions);
@@ -161,6 +162,8 @@ function close_details()
 function follow(position)
 {
 	 map.setCenter(new google.maps.LatLng(position.lat,position.lng));
+	 if(map.getZoom() < 15)
+	 	map.setZoom(15);
 }
 
 function follow_toggle()

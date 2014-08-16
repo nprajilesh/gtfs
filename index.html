@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="details">
+<head>
+<title>Realtime Tracking</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=500">
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>  
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+<script type="text/javascript" src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery_easing.js"></script>
+<script type="text/javascript" src="js/markerAnimate.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="init()">
+<div class="col-md-12 header">
+            <h3>REALTIME TRACKING SYSTEM - TRIVANDRUM</h3>
+</div>
+        <div id="map_canvas" class="col-md-12"></div>
+
+<div id="hideclick" class="panel panel-info " ng-controller="DetailsController" style="margin-right:10px;width:270px">
+          <div  id="app-angular" class="panel-heading panel_head_style">Trip Id : {{empList.trip_id}}
+          <button class="close" onclick="close_details()">×</button>
+          <br>
+          <input type="button" id="follow_btn" onclick="follow_toggle()" value="Follow">
+           </div>
+             <tabset justified="true" class="tab_style">
+                <tab heading="Vehicle Status">
+                  <table class="table tablestyle" style="table-layout:fixed;border:3px">        
+                                <thead class="thead_style">
+                                    <tr>
+                                    <th>Stop Name </th>
+                                    <th>Expected time </th>
+                                    <th>Actual Time </th>
+                                    </tr>
+                                 </thead> 
+                    </table>
+                    <div style="overflow-y:auto;height:300px">
+                      <table class="table tablestyle" style="table-layout:fixed">    
+                                  <tbody >
+                                        <tr ng-repeat ="stop in empList.stops_visited" class="stop_visited" >
+                                              <td style="text-align: left">{{stop.place}}</td>
+                                              <td>{{stop.sh_time}}</td>
+                                              <td>{{stop.arr_time}}</td>
+                                        </tr>                 
+                                        <tr ng-repeat ="stop in empList.stops_rem" class="stop_remaining">
+                                              <td style="text-align: left">{{stop.place}}</td>
+                                              <td>{{stop.sh_time}}</td>
+                                              <td>{{stop.arr_time}}</td>
+                                        </tr>
+                                  </tbody>
+                      </table>
+                    </div>
+                </tab>
+
+                <tab heading="Employees">
+                 <div style="overflow-y:auto;height:300px">
+                    <table class="table tablestyle" style="table-layout:fixed">    
+                                  <tbody >
+                                        <tr ng-repeat ="person in empList.emp" class="emp_list" >
+                                        <td style="text-align: left">{{person}}</td>
+                                  </tbody>
+                      </table>
+                 </div>
+                </tab>
+      
+            </tabset>                 
+                    
+  </div>
+
+   </body>
+</html>

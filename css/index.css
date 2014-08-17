@@ -37,17 +37,19 @@ body { height: 100%; margin: 0; padding: 0 }
      width:10%;
   }
   .stop_visited 
-  {
-      color: #fff;
-      background-color: #51871e;
-      border-color: #a1eb57;
-  }
-   .stop_remaining
-  {
-      color: #fff;
-      background-color: #e52e44;
-      border-color: #f02f17;
-  }
+ {
+     color: #fff;
+     border-left: 3px;
+     background-color: #747272;
+     border-color: #f32121;
+ }
+  .stop_remaining,.emp_list
+ {
+     color:#004b76;
+     border-left: 1.5px;
+     background-color: #f7f7f7;
+     border-color: #004b76;
+ }
   .tablestyle
   {
     margin-bottom:0px;
@@ -58,20 +60,14 @@ body { height: 100%; margin: 0; padding: 0 }
   }
   .thead_style
   {
-      color: #2c3e50;
-      background-color:#ecf0f1;
-      border-color: #95a5a6;
-  }
-  .emp_list
-  {
-      color: #16a085;
-      background-color: #ecf0f1;
-      border-color: #7f8c8d;
+      color: #004b76;
+      background-color:#e7e3e3;
+      border-color: #194df8;
   }
   .tab_style
   {
-    border-bottom: 20px;
-    border-color: #fff;
+    border: 0px;
+    border-bottom: 4.5px #194df8 solid;
   }
 
   #hideclick
@@ -83,7 +79,7 @@ body { height: 100%; margin: 0; padding: 0 }
  
 
 
-input, textarea, select {
+input, textrea, select {
     border: 1px solid #555;
     padding: 0.5em;
     font-size: 15px;
@@ -169,7 +165,7 @@ input[type=checkbox]:checked {
      margin-top: 13px;
  }
 
-#follow_btn{
+#follow_btn,#show_btn{
   width: 80px;
   margin-top: 5px;
 border:1px solid #495267; 
@@ -192,7 +188,7 @@ border:1px solid #495267;
  filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#606c88, endColorstr=#3f4c6b);
 }
 
-#follow_btn:hover {
+#follow_btn:hover,#show_btn:hover  {
  border:1px solid #363d4c;
  background-color: #4b546a;
  background: -webkit-gradient(linear, left top, left bottom, from(#4b546a), to(#2c354b));

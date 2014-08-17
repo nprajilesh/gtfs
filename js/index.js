@@ -123,7 +123,8 @@ function updatevehicle(data)
 function createvehicle(data,point)
 {
 
-	var image = 'bus.png'
+	var image = 'bus.png';
+	var colour_arr=["#663399","#26A65B","#F7CA18"];
 	var	newmarker = new google.maps.Marker({
 			position : point,
 			map : map,
@@ -137,7 +138,15 @@ function createvehicle(data,point)
 
 
   	google.maps.event.addListener(markersarr[uid], 'click', function() {
+
+  		if(vehicle_id!==this.id && vehicle_id!==-1)
+  		{
+  			document.getElementById("show_btn").value="Show Route";
+		     vehicles[vehicle_id].route.setMap(null);
+  		}
+
   	   	vehicle_id=this.id;
+  	   	console.log(vehicle_id);
   		socket.emit('click',vehicle_id);
      	 document.getElementById('hideclick').style.display = "block";
      	
@@ -152,7 +161,7 @@ function createvehicle(data,point)
 		   strokeColor: '#c0392b',
 		   strokeOpacity: 1,
 		   strokeWeight: 4 ,
-		    zIndex: 2100 
+		    zIndex: 150 
 		};	
 	  poly = new google.maps.Polyline(polyOptions);
  	  poly.setMap(map);
@@ -162,10 +171,10 @@ function createvehicle(data,point)
  	  var polyline2 = new google.maps.Polyline
  	  ({
 		            path: [],
-		            strokeColor: '#2ecc71',
+		            strokeColor: colour_arr[getRandomInt(colour_arr)],
 		            strokeWeight: 4,
 		             strokeOpacity: 1,
-		              zIndex: 100 
+		              zIndex: 10 
 		          });
 		    
 		     for(var i in route_data.routes)
@@ -256,4 +265,11 @@ function route_toggle()
 		document.getElementById("show_btn").value="Show Route";
 		vehicles[vehicle_id].route.setMap(null);
 	}
+}
+var randCount = -1;
+function getRandomInt(data) {
+	randCount++;
+	if(data.length === randCount)
+		randCount = 0;
+	return randCount;
 }

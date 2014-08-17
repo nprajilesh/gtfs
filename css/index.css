@@ -39,14 +39,28 @@ body { height: 100%; margin: 0; padding: 0 }
   .stop_visited 
  {
      color: #fff;
-     border-left: 3px;
+     border-left: 3px bold #fff;
      background-color: #747272;
      border-color: #f32121;
  }
+ 
+ .nav .active
+ {
+  border: 0px;
+  border-bottom: 4.5px #194df8 solid;
+ 
+ }
+ 
+ .nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus
+ {
+  border: 0px;
+  background-color: #ddd;
+  color: #004b76;
+ }
+
   .stop_remaining,.emp_list
  {
      color:#004b76;
-     border-left: 1.5px;
      background-color: #f7f7f7;
      border-color: #004b76;
  }
@@ -67,15 +81,22 @@ body { height: 100%; margin: 0; padding: 0 }
   .tab_style
   {
     border: 0px;
-    border-bottom: 4.5px #194df8 solid;
   }
-
+  .nav-tabs.nav-justified>li>a
+  {
+    border: 0px;
+  }
   #hideclick
   {
     border-color:#004b76;
     border-width: 1px;
     
   }
+ 
+ .nav>li>a:hover, .nav>li>a:focus {
+  text-decoration: none;
+  background-color: initial;
+}
  
 
 
